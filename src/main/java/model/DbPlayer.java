@@ -10,6 +10,17 @@ public class DbPlayer {
 
     private int o_win_num;
 
+    public DbPlayer(int id, String name, int x_win_num, int o_win_num) {
+        this.id = id;
+        this.name = name;
+        this.x_win_num = x_win_num;
+        this.o_win_num = o_win_num;
+    }
+
+    public DbPlayer() {
+
+    }
+
 
     public int getId() {
         return id;

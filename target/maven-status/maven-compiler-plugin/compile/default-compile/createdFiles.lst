@@ -1,0 +1,17 @@
+database/dbService.class
+controllers/MoveAdvisorController.class
+controllers/WinnerController$IPointGenerator.class
+model/Game.class
+XOCLI.class
+model/exceptions/AbstractXOException.class
+model/exceptions/InvalidPointException.class
+model/Player.class
+database/dbTableCreator.class
+view/ConsoleView.class
+model/DbPlayer.class
+model/Figure.class
+model/exceptions/AlreadyOccupiedException.class
+controllers/CurrentMoveController.class
+model/Field.class
+controllers/MoveController.class
+controllers/WinnerController.class
