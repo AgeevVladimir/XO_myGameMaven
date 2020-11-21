@@ -1,1 +1,16 @@
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/database/dbService.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Field.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Figure.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/exceptions/AbstractXOException.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/database/dbTableCreator.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/controllers/MoveController.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/XOCLI.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/exceptions/InvalidPointException.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Game.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/controllers/WinnerController.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/DbPlayer.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/controllers/MoveAdvisorController.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/exceptions/AlreadyOccupiedException.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/view/ConsoleView.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Player.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/controllers/CurrentMoveController.java
