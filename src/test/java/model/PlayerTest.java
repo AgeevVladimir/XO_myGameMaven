@@ -12,7 +12,8 @@ public class PlayerTest {
         final String inputValue = "Vovchik";
         final String expectedValue = inputValue;
 
-        final Player player = new Player(inputValue, null);
+
+        final Player player = new Player(inputValue, new DbPlayer(), null);
 
         final String actlValue = player.getName();
 
@@ -26,7 +27,7 @@ public class PlayerTest {
         final Figure inputValue = Figure.O;
         final Figure expectedValue = inputValue;
 
-        final Player player = new Player(null, inputValue);
+        final Player player = new Player(null, new DbPlayer(), inputValue);
 
         final Figure actualValue = player.getFigure();
 

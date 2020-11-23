@@ -4,6 +4,7 @@ import controllers.CurrentMoveController;
 import controllers.MoveAdvisorController;
 import controllers.MoveController;
 import controllers.WinnerController;
+import database.dbService;
 import model.Field;
 import model.Figure;
 import model.Game;
@@ -39,10 +40,11 @@ public class ConsoleView {
         final Figure winner1 = winnerController.getWinner(field);
         final List<Point> availablePoints;
         final MoveAdvisorController moveAdvisorController = new MoveAdvisorController();
-
+        final dbService dbService = new dbService();
 
         if (winner1 != null) {
             System.out.printf("winner is: %s\n", winner1);
+            updatePlayerDb(game, winner1, dbService);
             return false;
         }
         if (currentFigure == null) {
@@ -52,6 +54,7 @@ public class ConsoleView {
                 return false;
             } else {
                 System.out.printf("winner is: %s\n", winner);
+                updatePlayerDb(game, winner, dbService);
                 return false;
             }
         }
@@ -78,6 +81,18 @@ public class ConsoleView {
             System.out.println("Point os invalid!");
         }
         return true;
+    }
+
+    private void updatePlayerDb(Game game, Figure winner1, dbService dbService) {
+        if (winner1 == Figure.X) {
+            int x_win_num = game.getPlayers()[0].getDbPlayer().getX_win_num();
+            game.getPlayers()[0].getDbPlayer().setX_win_num(x_win_num + 1);
+            dbService.updatePlayer(game.getPlayers()[0].getDbPlayer());
+        } else {
+            int o_win_num = game.getPlayers()[1].getDbPlayer().getO_win_num();
+            game.getPlayers()[1].getDbPlayer().setO_win_num(o_win_num + 1);
+            dbService.updatePlayer(game.getPlayers()[1].getDbPlayer());
+        }
     }
 
     private Point askPoint() {

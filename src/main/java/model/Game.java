@@ -8,6 +8,8 @@ public class Game {
 
     private final String name;
 
+    // TODO: 23.11.2020 add winner 
+
     public Game(Player[] players, Field field, String name) {
         this.players = players;
         this.field = field;
