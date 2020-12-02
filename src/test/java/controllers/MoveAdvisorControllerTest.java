@@ -65,11 +65,14 @@ class MoveAdvisorControllerTest {
 
         final List<Point> allAvailablePoints = moveAdvisorController.getAllAvailablePoints(field);
         final List<Point> expextedAvailablePoints = new ArrayList<>();
-        expextedAvailablePoints.add(new Point(3,1));
-        expextedAvailablePoints.add(new Point(3,2));
         expextedAvailablePoints.add(new Point(3,3));
+        expextedAvailablePoints.add(new Point(3,2));
+        expextedAvailablePoints.add(new Point(3,1));
 
-        assertTrue(allAvailablePoints.equals(expextedAvailablePoints));
+        assertEquals(3, allAvailablePoints.size());
+        assertTrue(allAvailablePoints.containsAll(expextedAvailablePoints));
+
+
 
     }
 

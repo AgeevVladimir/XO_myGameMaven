@@ -4,11 +4,14 @@ public class Player {
 
     private final String name;
 
+    private final DbPlayer dbPlayer;
+
     private final Figure figure;
 
     public Player(final String name,
-                  final Figure figure) {
+                  DbPlayer dbPlayer, final Figure figure) {
         this.name = name;
+        this.dbPlayer = dbPlayer;
         this.figure = figure;
     }
 
@@ -19,4 +22,6 @@ public class Player {
     public Figure getFigure() {
         return figure;
     }
+
+    public DbPlayer getDbPlayer() {return dbPlayer;}
 }
