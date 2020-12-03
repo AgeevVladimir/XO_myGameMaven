@@ -5,6 +5,7 @@ import controllers.MoveAdvisorController;
 import controllers.MoveController;
 import controllers.WinnerController;
 import database.dbService;
+import model.DbPlayer;
 import model.Field;
 import model.Figure;
 import model.Game;
@@ -12,6 +13,10 @@ import model.exceptions.AlreadyOccupiedException;
 import model.exceptions.InvalidPointException;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,8 +35,6 @@ public class ConsoleView {
             printLine(field, x);
             if (x!=field.getSize()-1) printSeparator();
         }
-
-
     }
 
     public boolean move(final Game game) throws InvalidPointException {
@@ -126,6 +129,27 @@ public class ConsoleView {
 
     private void printSeparator() {
         System.out.println("----------");
+    }
+
+    public String askName(String num) throws IOException, SQLException {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter" + num + "player");
+        String playerName = reader.readLine();
+
+        dbService dbService = new dbService();
+
+        if (dbService.getPlayer(playerName).getName() == null) {
+            dbService.addPlayer(playerName);
+            return playerName;
+
+        } else {
+            return dbService.getPlayer(playerName).getName();
+        }
+
+
+
     }
 
 }

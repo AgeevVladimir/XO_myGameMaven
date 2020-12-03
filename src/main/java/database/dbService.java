@@ -33,7 +33,7 @@ public class dbService {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             return null;
         }
-        System.out.println("successfully selected");
+        System.out.println("sql statement successfully executed");
 
         return rs;
     }
@@ -61,11 +61,13 @@ public class dbService {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
 
+        System.out.println("table successfully updated");
+
     }
 
 
 
-    public DbPlayer getPlayer(String name) {
+    public DbPlayer getPlayer(String name) throws SQLException {
 
         DbPlayer player = new DbPlayer();
 
@@ -78,7 +80,6 @@ public class dbService {
         if (rs == null) {
             System.out.println("No player with name " + name);
             return null;
-            // TODO: 23.11.2020 Create default player 'guest'
 
         } else {
             try {
@@ -89,10 +90,19 @@ public class dbService {
                     int x_win_num = rs.getInt("X_WIN_NUM");
                     int o_win_num = rs.getInt("O_WIN_NUM");
 
-                    player.setId(id);
-                    player.setName(playername);
-                    player.setO_win_num(o_win_num);
-                    player.setX_win_num(x_win_num);
+                    System.out.println(playername);
+
+                    if (playername == null) {
+                        System.out.println("No player with name " + playername);
+                        return null;
+
+                    } else {
+
+                        player.setId(id);
+                        player.setName(playername);
+                        player.setO_win_num(o_win_num);
+                        player.setX_win_num(x_win_num);
+                    }
                 }
 
             } catch (SQLException throwables) {
@@ -114,5 +124,14 @@ public class dbService {
 
         callExecuteUpdate(sql);
 
+    }
+
+    public void addPlayer(String playerName) {
+
+        String sql = "INSERT INTO xo_game.player (NAME, X_WIN_NUM, O_WIN_NUM) VALUES"
+                + "(" + "'" + playerName + "'" + "," + 0 + "," + 0 + ")";
+        System.out.println(sql);
+
+        callExecuteUpdate(sql);
     }
 }
