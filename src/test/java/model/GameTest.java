@@ -10,7 +10,7 @@ class GameTest {
     void getPlayers() {
 
         Player[] player = new Player[2];
-        final Game game = new Game(player, null, null);
+        final Game game = new Game(player, null, null, null);
 
         assertEquals(player,game.getPlayers());
     }
@@ -19,7 +19,7 @@ class GameTest {
     void getField() {
 
         Field field = new Field(3);
-        final Game game = new Game(null, field, null);
+        final Game game = new Game(null, field, null, null);
 
         assertEquals(field,game.getField());
     }
@@ -28,7 +28,7 @@ class GameTest {
     void getName() {
 
         String inputValue = "Game1";
-        final Game game = new Game(null, null, inputValue);
+        final Game game = new Game(null, null, inputValue, null);
 
         assertEquals(inputValue,game.getName());
     }

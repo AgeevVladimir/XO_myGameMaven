@@ -36,7 +36,7 @@ public class dbTableCreator {
                     + " NAME                    VARCHAR(32)            NOT NULL, "
                     + " PLAYER1_ID              INTEGER                NOT NULL, "
                     + " PLAYER2_ID              INTEGER                NOT NULL, "
-                    + " WINNER_ID               INTEGER                NOT NULL  "
+                    + " WINNER_ID               INTEGER                          "
                     + " ) ";
             stmt.executeUpdate(sql);
 

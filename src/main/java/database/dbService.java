@@ -1,5 +1,6 @@
 package database;
 
+import model.DbGame;
 import model.DbPlayer;
 
 import java.sql.*;
@@ -146,5 +147,15 @@ public class dbService {
     }
 
 
+    public void addGame(DbPlayer player1, DbPlayer player2) {
 
+        String gameName = "new game";
+
+        String sql = "INSERT INTO xo_game.game (NAME, PLAYER1_ID, PLAYER2_ID) VALUES"
+                + "(" + "'" + gameName + "'" + "," + player1.getId() + "," + player2.getId() + ")";
+        System.out.println(sql);
+
+        callExecuteUpdate(sql);
+
+    }
 }

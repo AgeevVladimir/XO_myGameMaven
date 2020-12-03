@@ -2,6 +2,7 @@
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Field.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/Figure.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/exceptions/AbstractXOException.java
+/Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/model/DbGame.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/database/dbTableCreator.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/controllers/MoveController.java
 /Users/ruaaev7/IdeaProjects/XO_myGameMaven/src/main/java/XOCLI.java
