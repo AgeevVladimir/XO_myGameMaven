@@ -149,7 +149,8 @@ public class dbService {
 
     public void addGame(DbPlayer player1, DbPlayer player2) {
 
-        String gameName = "new game";
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String gameName = "Game at " + timestamp.toString().substring(0,16);
 
         String sql = "INSERT INTO xo_game.game (NAME, PLAYER1_ID, PLAYER2_ID) VALUES"
                 + "(" + "'" + gameName + "'" + "," + player1.getId() + "," + player2.getId() + ")";
