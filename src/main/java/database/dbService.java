@@ -1,5 +1,6 @@
 package database;
 
+import model.DbGame;
 import model.DbPlayer;
 
 import java.sql.*;
@@ -78,41 +79,24 @@ public class dbService {
         ResultSet rs = callExecuteQuery(sql);
 
         if (rs == null) {
-            System.out.println("No player with name " + name);
+            System.out.println("Error in executing query");
             return null;
 
         } else {
             try {
-                if (rs.next()) {
 
-                    int id = rs.getInt("ID");
-                    String playername = rs.getString("NAME");
-                    int x_win_num = rs.getInt("X_WIN_NUM");
-                    int o_win_num = rs.getInt("O_WIN_NUM");
+                List<DbPlayer> playerFromResultSet = getPlayerFromResultSet(rs);
 
-                    System.out.println(playername);
-
-                    if (playername == null) {
-                        System.out.println("No player with name " + playername);
-                        return null;
-
-                    } else {
-
-                        player.setId(id);
-                        player.setName(playername);
-                        player.setO_win_num(o_win_num);
-                        player.setX_win_num(x_win_num);
-                    }
-                }
+                if (playerFromResultSet.isEmpty()) {return null;}
+                    else {return playerFromResultSet.get(0);}
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
+                return null;
             }
 
-            return player;
         }
     }
-
 
     public void updatePlayer(DbPlayer dbPlayer) {
 
@@ -133,5 +117,45 @@ public class dbService {
         System.out.println(sql);
 
         callExecuteUpdate(sql);
+    }
+
+    private List<DbPlayer> getPlayerFromResultSet(ResultSet rs) throws SQLException {
+
+        List<DbPlayer> dbPlayers = new ArrayList<>();
+
+        while(rs.next()) {
+
+            int id = rs.getInt("ID");
+            String playername = rs.getString("NAME");
+            int x_win_num = rs.getInt("X_WIN_NUM");
+            int o_win_num = rs.getInt("O_WIN_NUM");
+
+            if (playername != null) {
+
+                DbPlayer player = new DbPlayer();
+                player.setId(id);
+                player.setName(playername);
+                player.setO_win_num(o_win_num);
+                player.setX_win_num(x_win_num);
+
+                dbPlayers.add(player);
+
+            }
+        }
+        return dbPlayers;
+
+    }
+
+
+    public void addGame(DbPlayer player1, DbPlayer player2) {
+
+        String gameName = "new game";
+
+        String sql = "INSERT INTO xo_game.game (NAME, PLAYER1_ID, PLAYER2_ID) VALUES"
+                + "(" + "'" + gameName + "'" + "," + player1.getId() + "," + player2.getId() + ")";
+        System.out.println(sql);
+
+        callExecuteUpdate(sql);
+
     }
 }

@@ -140,7 +140,7 @@ public class ConsoleView {
 
         dbService dbService = new dbService();
 
-        if (dbService.getPlayer(playerName).getName() == null) {
+        if (dbService.getPlayer(playerName) == null) {
             dbService.addPlayer(playerName);
             return playerName;
 

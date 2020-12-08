@@ -29,13 +29,13 @@ class dbServiceTest {
 
         dbService dbService = new dbService();
 
-        String expectedPlayerName = "Vladimir";
+        String expectedPlayerName = "qwertyvbnm";
 
         DbPlayer player = dbService.getPlayer(expectedPlayerName);
 
         System.out.println(player);
 
-        assertNull(player.getName());
+        assertNull(player);
 
     }
 }

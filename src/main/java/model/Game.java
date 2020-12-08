@@ -8,12 +8,13 @@ public class Game {
 
     private final String name;
 
-    // TODO: 23.11.2020 add winner 
+    private final DbGame dbGame;
 
-    public Game(Player[] players, Field field, String name) {
+    public Game(Player[] players, Field field, String name, DbGame dbGame) {
         this.players = players;
         this.field = field;
         this.name = name;
+        this.dbGame = dbGame;
     }
 
     public Player[] getPlayers() {
@@ -26,6 +27,10 @@ public class Game {
 
     public String getName() {
         return name;
+    }
+
+    public DbGame getDbGame() {
+        return dbGame;
     }
 
 }
