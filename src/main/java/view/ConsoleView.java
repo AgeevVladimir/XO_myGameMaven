@@ -141,8 +141,14 @@ public class ConsoleView {
         dbService dbService = new dbService();
 
         if (dbService.getPlayer(playerName) == null) {
-            dbService.addPlayer(playerName);
-            return playerName;
+
+            System.out.println("Payer" + playerName + "doesn't exist. Press Y to create new player");
+            reader = new BufferedReader(new InputStreamReader(System.in));
+            String answer = reader.readLine();
+            if (answer == "Y") {
+                dbService.addPlayer(playerName);
+                return playerName;
+            } else {return "Default";}
 
         } else {
             return dbService.getPlayer(playerName).getName();
