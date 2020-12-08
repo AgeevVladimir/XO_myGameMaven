@@ -144,7 +144,7 @@ public class ConsoleView {
             System.out.println("Payer " + playerName + " doesn't exist. Press Y to create new player");
             reader = new BufferedReader(new InputStreamReader(System.in));
             String answer = reader.readLine();
-            if (answer == "Y") {
+            if (answer.equals("Y")) {
                 dbService.addPlayer(playerName);
             } else {
                 reader = new BufferedReader(new InputStreamReader(System.in));
