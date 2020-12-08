@@ -23,9 +23,8 @@ public class dbService {
                             "vova", "123");
 
             stmt = c.createStatement();
-
             rs = stmt.executeQuery(sql);
-
+//            System.out.println(sql);
             stmt.close();
             c.close();
 
@@ -34,7 +33,7 @@ public class dbService {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             return null;
         }
-        System.out.println("sql statement successfully executed");
+//        System.out.println("sql statement successfully executed");
 
         return rs;
     }
@@ -53,7 +52,7 @@ public class dbService {
 
             stmt = c.createStatement();
             stmt.executeUpdate(sql);
-
+//            System.out.println(sql);
             stmt.close();
             c.close();
 
@@ -62,7 +61,7 @@ public class dbService {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
 
-        System.out.println("table successfully updated");
+//        System.out.println("table successfully updated");
 
     }
 
@@ -73,8 +72,6 @@ public class dbService {
         DbPlayer player = new DbPlayer();
 
         String sql = "SELECT * FROM xo_game.player p where p.name = '" + name + "'";
-
-        System.out.println(sql);
 
         ResultSet rs = callExecuteQuery(sql);
 
@@ -103,8 +100,6 @@ public class dbService {
         String sql = "UPDATE xo_game.player SET X_WIN_NUM =" + dbPlayer.getX_win_num() + ","
                                                + " O_WIN_NUM =" + dbPlayer.getO_win_num()
                                                + " WHERE NAME = " + "'" + dbPlayer.getName() + "'";
-        System.out.println(sql);
-        //Alternative: String sql = String.format("UPDATE xo_game.player p SET X_WIN_NUM = %s , O_WIN_NUM = %s WHERE NAME = %s", dbPlayer.getX_win_num(), dbPlayer.getO_win_num(), dbPlayer.getName());
 
         callExecuteUpdate(sql);
 
@@ -114,7 +109,6 @@ public class dbService {
 
         String sql = "INSERT INTO xo_game.player (NAME, X_WIN_NUM, O_WIN_NUM) VALUES"
                 + "(" + "'" + playerName + "'" + "," + 0 + "," + 0 + ")";
-        System.out.println(sql);
 
         callExecuteUpdate(sql);
     }
@@ -154,7 +148,6 @@ public class dbService {
 
         String sql = "INSERT INTO xo_game.game (NAME, PLAYER1_ID, PLAYER2_ID) VALUES"
                 + "(" + "'" + gameName + "'" + "," + player1.getId() + "," + player2.getId() + ")";
-        System.out.println(sql);
 
         callExecuteUpdate(sql);
 
@@ -164,7 +157,7 @@ public class dbService {
 
         String sql = "UPDATE xo_game.game SET WINNER_ID =" + game.getWinnerId()
                 + " WHERE ID = (SELECT max(id) FROM xo_game.game)";
-        System.out.println(sql);
+
         callExecuteUpdate(sql);
 
     }
