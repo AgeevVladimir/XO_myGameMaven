@@ -48,16 +48,19 @@ public class ConsoleView {
         if (winner1 != null) {
             System.out.printf("winner is: %s\n", winner1);
             updatePlayerDb(game, winner1, dbService);
+            updateGameDb(game, winner1, dbService);
             return false;
         }
         if (currentFigure == null) {
             final Figure winner = winnerController.getWinner(field);
             if (winner == null) {
                 System.out.println("no winner and no move left");
+                updateGameDb(game, winner, dbService);
                 return false;
             } else {
                 System.out.printf("winner is: %s\n", winner);
                 updatePlayerDb(game, winner, dbService);
+                updateGameDb(game, winner, dbService);
                 return false;
             }
         }
@@ -81,7 +84,7 @@ public class ConsoleView {
             moveController.applyFigure(field, point, currentFigure);
         } catch (InvalidPointException | AlreadyOccupiedException e) {
             e.printStackTrace();
-            System.out.println("Point os invalid!");
+            System.out.println("Point is invalid!");
         }
         return true;
     }
@@ -97,6 +100,22 @@ public class ConsoleView {
             dbService.updatePlayer(game.getPlayers()[1].getDbPlayer());
         }
     }
+
+    private void updateGameDb(Game game, Figure winner1, dbService dbService) {
+        if (winner1 == Figure.X) {
+            game.getDbGame().setWinnerId(game.getPlayers()[0].getDbPlayer().getId());
+            dbService.updateGame(game.getDbGame());
+        } else {
+            if (winner1 == Figure.O) {
+                game.getDbGame().setWinnerId(game.getPlayers()[1].getDbPlayer().getId());
+                dbService.updateGame(game.getDbGame());
+            } else {
+                game.getDbGame().setWinnerId(999);
+                dbService.updateGame(game.getDbGame());
+            }
+        }
+    }
+
 
     private Point askPoint() {
         return new Point(askCoordinate("X") - 1, askCoordinate("Y") - 1);

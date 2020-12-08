@@ -39,6 +39,8 @@ public class XOCLI {
             consoleView.show(game);
         }
 
+        dbService.updateGame(dbGame);
+
 
     }
 }
