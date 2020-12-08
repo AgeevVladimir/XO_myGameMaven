@@ -13,7 +13,10 @@ public class XOCLI {
         final ConsoleView consoleView = new ConsoleView();
 
         String player1Name = consoleView.askName(" first ");
-        String player2Name = consoleView.askName(" second ");
+        String player2Name = player1Name;
+        while (player2Name.equals(player1Name)) {
+            player2Name = consoleView.askName(" second ");
+        }
 
         dbService dbService = new dbService();
         DbPlayer player1 = dbService.getPlayer(player1Name);
@@ -35,6 +38,8 @@ public class XOCLI {
         while (consoleView.move(game)) {
             consoleView.show(game);
         }
+
+        dbService.updateGame(dbGame);
 
 
     }

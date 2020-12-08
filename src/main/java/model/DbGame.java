@@ -14,6 +14,17 @@ public class DbGame {
 
     private int winnerId;
 
+    public DbGame(int id, String name, int player1Id, int player2Id, int winnerId) {
+        this.id = id;
+        this.name = name;
+        this.player1Id = player1Id;
+        this.player2Id = player2Id;
+        this.winnerId = winnerId;
+    }
+
+    public DbGame() {
+    }
+
 
     public int getId() {
         return id;
