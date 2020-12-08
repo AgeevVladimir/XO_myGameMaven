@@ -134,28 +134,26 @@ public class ConsoleView {
     public String askName(String num) throws IOException, SQLException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("Enter" + num + "player");
         String playerName = reader.readLine();
 
         dbService dbService = new dbService();
 
-        if (dbService.getPlayer(playerName) == null) {
+        while (dbService.getPlayer(playerName) == null) {
 
-            System.out.println("Payer" + playerName + "doesn't exist. Press Y to create new player");
+            System.out.println("Payer " + playerName + " doesn't exist. Press Y to create new player");
             reader = new BufferedReader(new InputStreamReader(System.in));
             String answer = reader.readLine();
             if (answer == "Y") {
                 dbService.addPlayer(playerName);
-                return playerName;
-            } else {return "Default";}
-
-        } else {
-            return dbService.getPlayer(playerName).getName();
+            } else {
+                reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter" + num + "player");
+                playerName = reader.readLine();
+            }
         }
 
-
-
+        return dbService.getPlayer(playerName).getName();
     }
 
 }
