@@ -158,4 +158,13 @@ public class dbService {
         callExecuteUpdate(sql);
 
     }
+
+    public void updateGame(DbGame game) {
+
+        String sql = "UPDATE xo_game.game SET WINNER_ID =" + game.getWinnerId()
+                + " WHERE ID = (SELECT max(id) FROM xo_game.game)";
+        System.out.println(sql);
+        callExecuteUpdate(sql);
+
+    }
 }

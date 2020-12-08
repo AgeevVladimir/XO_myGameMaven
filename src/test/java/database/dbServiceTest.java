@@ -1,5 +1,6 @@
 package database;
 
+import model.DbGame;
 import model.DbPlayer;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +37,15 @@ class dbServiceTest {
         System.out.println(player);
 
         assertNull(player);
+
+    }
+
+    @Test
+    void updateGame() {
+
+        dbService dbService = new dbService();
+        DbGame game = new DbGame(9, "new game", 3, 15, 3);
+        dbService.updateGame(game);
 
     }
 }
